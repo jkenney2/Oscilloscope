@@ -1,0 +1,84 @@
+﻿<Window x:Class="Oscilloscope.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:Oscilloscope"
+        mc:Ignorable="d"
+        Title="Oscilloscope" Height="350" Width="525" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Grid Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Orientation="Vertical">
+            <GroupBox Header="Volt Scale" Margin="3">
+                <ComboBox Name="cbxVoltageScale"  SelectedIndex="0" SelectionChanged="ui_Inputs_Changed">
+                    <sys:Double>5.0</sys:Double>
+                    <sys:Double>2.0</sys:Double>
+                    <sys:Double>1.0</sys:Double>
+                    <sys:Double>0.5</sys:Double>
+                    <sys:Double>0.2</sys:Double>
+                    <sys:Double>0.1</sys:Double>
+                </ComboBox>
+            </GroupBox>
+            <GroupBox Header="Volt Base" Margin="3" >
+                <ComboBox Name="cbxVoltageBase" SelectedIndex="0" SelectionChanged="ui_Inputs_Changed" >
+                    <sys:String>Center</sys:String>
+                    <sys:String>Bottom</sys:String>
+                </ComboBox>
+            </GroupBox>
+            <GroupBox Header="Time Scale" Margin="3">
+                <ComboBox Name="cbxTimeScale" SelectedIndex="0" SelectionChanged="ui_Inputs_Changed">
+                    <sys:Double>2000.0</sys:Double>
+                    <sys:Double>1000.0</sys:Double>
+                    <sys:Double>500.0</sys:Double>
+                    <sys:Double>200.0</sys:Double>
+                    <sys:Double>100.0</sys:Double>
+                    <sys:Double>50.0</sys:Double>
+                    <sys:Double>20.0</sys:Double>
+                    <sys:Double>10.0</sys:Double>
+                    <sys:Double>5.0</sys:Double>
+                    <sys:Double>2.0</sys:Double>
+                    <sys:Double>1.0</sys:Double>
+                </ComboBox>
+            </GroupBox>
+            <GroupBox Header="Read Ratio" Margin="3">
+                <ComboBox x:Name="cbxReadRatio" SelectedIndex="0" SelectionChanged="ui_Inputs_Changed">
+                    <sys:Int32>1</sys:Int32>
+                    <sys:Int32>2</sys:Int32>
+                    <sys:Int32>5</sys:Int32>
+                    <sys:Int32>10</sys:Int32>
+                </ComboBox>
+            </GroupBox>
+            <GroupBox Margin="3">
+                <CheckBox Name="chkbxTriggerOn" IsChecked="False" Click="chkbxTriggerOn_Click">Trigger</CheckBox>
+            </GroupBox>
+            <GroupBox Header="Trigger Volts" Margin="3">
+                <Slider Name="sldTrigVolts" Minimum="0" Maximum="5" TickFrequency="1" TickPlacement="BottomRight" Value="2.5" ValueChanged="sldTrigVolts_ValueChanged"></Slider>
+            </GroupBox>
+            <GroupBox Header="Ports" Margin="5">
+                <ComboBox Name="cbxPorts" DropDownOpened="cbxPorts_DropDownOpened"></ComboBox>
+            </GroupBox>
+            <GroupBox Header="Baud Rate" Margin="5">
+                <ComboBox Name="cbxBaudRate" SelectedIndex="0" SelectionChanged="ui_Inputs_Changed">
+                    <sys:Int32>460800</sys:Int32>
+                    <sys:Int32>230400</sys:Int32>
+                    <sys:Int32>115200</sys:Int32>
+                    <sys:Int32>57600</sys:Int32>
+                    <sys:Int32>28800</sys:Int32>
+                    <sys:Int32>14400</sys:Int32>
+                </ComboBox>
+            </GroupBox>
+            <Button Name="btnStart" MinWidth="60" Margin="5" Click="btnStart_Click">Start</Button>
+            <Button Name="btnStop" MinWidth="60" Margin="5" Click="btnStop_Click">Stop</Button>
+            <Button Name="btnSave" MinWidth="60" Margin="5" Click="btnSave_Click">Save</Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
